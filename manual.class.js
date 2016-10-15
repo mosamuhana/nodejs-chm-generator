@@ -80,7 +80,7 @@ class Manual {
 			.addLine('Binary TOC=No')
 			.addLine('Binary Index=Yes')
 			.addLine('Compatibility=1.1 or later')
-			.addLine(`Title=Node.js ${config.nodeVersion} Documentation`)
+			.addLine(`Title=Node.js Documentation`)
 			.addLine('Full-text search=Yes')
 			.addLine('Display compile progress=Yes')
 			.addLine('Display compile notes=Yes')
