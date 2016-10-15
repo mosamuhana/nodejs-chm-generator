@@ -4,15 +4,16 @@ const https = require('https');
 const config = require('./config');
 const logger = require('./logger');
 
-function checkDir() {
-	var dir = config.options.outDir;
-	if (!fs.existsSync(dir)) fs.mkdirSync(dir);
-	if (!fs.existsSync(`${dir}/assets`)) fs.mkdirSync(`${dir}/assets`);
+function checkDir(outDir) {
+	if (!fs.existsSync(outDir)) fs.mkdirSync(outDir);
+	let assetsPath = path.join(outDir, 'assets');
+	if (!fs.existsSync(assetsPath)) fs.mkdirSync(assetsPath);
 }
 
 class Downloader {
 
-	constructor() {
+	constructor(outDir) {
+		this.outDir = outDir;
 		this.baseUrl = `https://nodejs.org/docs/${config.nodeVersion}/api`;
 		let t = new Date();
 		this.time = {
@@ -34,7 +35,7 @@ class Downloader {
 				let data = '';
 				res.on('data', chunk => data += chunk);
 				res.on('end', () => {
-					fs.writeFile(path.join(config.options.outDir, fileName), data, {encoding:'utf8'}, err => {
+					fs.writeFile(path.join(this.outDir, fileName), data, {encoding:'utf8'}, err => {
 						if (err) {
 							logger.error(`  - Download '${fileName}' Fail`);
 							reject(err);
@@ -52,7 +53,7 @@ class Downloader {
 	}
 
 	download() {
-		checkDir();
+		checkDir(this.outDir);
 		this.time.start = new Date();
 		return new Promise((resolve, reject) => {
 			return Promise.all(Object.keys(this.files).map(fileName => this.downloadFile(fileName)))

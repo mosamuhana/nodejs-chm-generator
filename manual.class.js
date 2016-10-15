@@ -36,13 +36,14 @@ function createFileList() {
 
 class Manual {
 
-	constructor() {
+	constructor(outDir) {
+		this.outDir = outDir;
 		this.options = config.options;
 	}
 
 	make() {
 		logger.log('Start: Downloading document files...');
-		(new Downloader(this.options.outDir)).download()
+		(new Downloader(this.outDir)).download()
 			.then(_ => {
 				logger.info('Finish: Downloading document files... OK\n');
 
@@ -59,7 +60,7 @@ class Manual {
 				logger.info('Finish: Create Help Project... OK\n');
 
 				logger.log('Start: Help Compilation...');
-				exec('hhc ' + path.join(this.options.outDir, this.options.projectFile), {encoding:'utf8'}, (err) => {
+				exec('hhc ' + path.join(this.outDir, this.options.projectFile), {encoding:'utf8'}, (err) => {
 					if (err) {
 						//console.error(err);
 					}
@@ -99,7 +100,7 @@ class Manual {
 
 		config.files.html.forEach(x => sb.addLine(x));
 
-		fs.writeFileSync(path.join(this.options.outDir, this.options.projectFile), sb.toString());
+		fs.writeFileSync(path.join(this.outDir, this.options.projectFile), sb.toString());
 	}
 
 	createIndexFile() {
@@ -116,7 +117,7 @@ class Manual {
 			.addLine('</body>')
 			.addLine('</html>');
 
-		fs.writeFileSync(path.join(this.options.outDir, this.options.indexFile), sb.toString());
+		fs.writeFileSync(path.join(this.outDir, this.options.indexFile), sb.toString());
 	}
 
 	createContentFile() {
@@ -137,7 +138,7 @@ class Manual {
 			.addLine('</body>')
 			.addLine('</html>');
 
-		fs.writeFileSync(path.join(this.options.outDir, this.options.contentFile), sb.toString());
+		fs.writeFileSync(path.join(this.outDir, this.options.contentFile), sb.toString());
 	}
 
 }

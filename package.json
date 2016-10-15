@@ -24,7 +24,7 @@
 		"url": "https://github.com/mosamuhana/nodejs-chm-generator/issues"
 	},
 
-	"main": "create.js",
+	"main": "manual.class.js",
 	"scripts": {
 		"start": "node create.js"
 	},
