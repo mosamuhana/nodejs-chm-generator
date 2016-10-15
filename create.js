@@ -1,4 +1,4 @@
-const Manual = require('./manual.class');
+const Manual = require('./');
 
 const manual = new Manual('docs');
 manual.make();

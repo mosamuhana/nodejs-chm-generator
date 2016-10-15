@@ -23,6 +23,14 @@ node create.js
 
 ## Usage
 
+```sh
+const Manual = require('nodejs-chm-generator');
+// or const Manual = require('nodejs-chm-generator/manual.class');
+
+const manual = new Manual('docs');
+manual.make();
+```
+
 ### To generate help file for other versions than 'latest'
 
 change 'nodeVersion' in 'config.js' file
