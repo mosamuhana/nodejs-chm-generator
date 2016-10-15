@@ -80,7 +80,7 @@ class Manual {
 			.addLine('Binary TOC=No')
 			.addLine('Binary Index=Yes')
 			.addLine('Compatibility=1.1 or later')
-			.addLine('Title=Node.js v6.8.0 Documentation')
+			.addLine(`Title=Node.js ${config.nodeVersion} Documentation`)
 			.addLine('Full-text search=Yes')
 			.addLine('Display compile progress=Yes')
 			.addLine('Display compile notes=Yes')
@@ -93,7 +93,7 @@ class Manual {
 			.addLine('')
 
 			.addLine('[WINDOWS]')
-			.addLine(`main=,"${this.options.contentFile}","${this.options.indexFile}","${this.options.defaultFile}","${this.options.defaultFile}",,,,,0x23520,222,0x1046,[10,10,780,560],0xB0000,,,,,,0`)
+			.addLine(`main=,"${this.options.contentFile}","${this.options.indexFile}","${this.options.defaultFile}","${this.options.defaultFile}",,,,,0x23520,222,0x1046,[10,10,780,560],0xB0000,,,1,,,0`)
 			.addLine('')
 
 			.addLine('[FILES]');
