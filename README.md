@@ -9,8 +9,14 @@ https://nodejs.org/docs/latest/api/
 
 ## Start
 
+Run
 ```sh
 npm install
+```
+
+Then
+```sh
+npm start
 or
 node create.js 
 ```
